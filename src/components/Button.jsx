@@ -6,20 +6,20 @@ export function cn(...inputs) {
 }
 
 export function Button({ className, variant = 'primary', size = 'md', children, ...props }) {
-  const baseStyles = 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none ring-offset-white';
+  const baseStyles = 'inline-flex items-center justify-center rounded-xl font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] shadow-sm';
   
   const variants = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700',
-    secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200',
-    outline: 'border border-gray-300 bg-transparent hover:bg-gray-100 text-gray-900',
-    ghost: 'bg-transparent hover:bg-gray-100 text-gray-900',
-    danger: 'bg-red-600 text-white hover:bg-red-700'
+    primary: 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 hover:shadow-md hover:-translate-y-0.5 border border-transparent',
+    secondary: 'bg-white text-slate-800 hover:bg-slate-50 border border-slate-200 hover:shadow-md hover:-translate-y-0.5',
+    outline: 'border-2 border-slate-200 bg-transparent hover:bg-slate-50 text-slate-700 hover:border-slate-300',
+    ghost: 'bg-transparent hover:bg-slate-100 text-slate-700 shadow-none',
+    danger: 'bg-gradient-to-r from-red-500 to-rose-600 text-white hover:from-red-600 hover:to-rose-700 hover:shadow-md border border-transparent'
   };
 
   const sizes = {
-    sm: 'h-9 px-3 text-sm',
-    md: 'h-10 px-4 py-2 text-sm',
-    lg: 'h-11 px-8 text-base'
+    sm: 'h-9 px-4 text-sm',
+    md: 'h-11 px-6 py-2 text-sm',
+    lg: 'h-14 px-8 text-base tracking-wide'
   };
 
   return (
