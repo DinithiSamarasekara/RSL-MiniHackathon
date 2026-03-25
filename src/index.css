@@ -1,52 +1,11 @@
 @import "tailwindcss";
 
-@theme {
-  --color-brand-50: #eff6ff;
-  --color-brand-100: #dbeafe;
-  --color-brand-500: #3b82f6;
-  --color-brand-600: #2563eb;
-  --color-brand-700: #1d4ed8;
-  --color-brand-900: #1e3a8a;
-  
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
-}
-
-body {
-  margin: 0;
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f8fafc;
-  color: #0f172a;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans tracking-tight;
+  }
 }
 
 .glass-panel {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-.gradient-text {
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  background-image: linear-gradient(to right, #2563eb, #8b5cf6, #ec4899);
-}
-
-.animated-bg {
-  background: linear-gradient(-45deg, #f8fafc, #f1f5f9, #eff6ff, #e0e7ff);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
-}
-
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl;
 }
