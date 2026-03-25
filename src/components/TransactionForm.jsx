@@ -72,13 +72,13 @@ export default function TransactionForm({ onClose, initialData }) {
           <div className="space-y-1.5">
             <label className="block text-sm font-bold text-slate-700 pl-1">Amount</label>
             <div className="relative group">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-lg group-focus-within:text-indigo-500 transition-colors">$</span>
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-lg group-focus-within:text-indigo-500 transition-colors">Rs.</span>
               <input
                 type="number"
                 required
                 min="0.01"
                 step="0.01"
-                className="w-full pl-9 pr-4 py-3 bg-white/50 border-2 border-slate-100 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all outline-none font-bold text-lg text-slate-800 shadow-sm"
+                className="w-full pl-12 pr-4 py-3 bg-white/50 border-2 border-slate-100 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all outline-none font-bold text-lg text-slate-800 shadow-sm"
                 value={formData.amount}
                 onChange={e => setFormData({...formData, amount: e.target.value})}
               />

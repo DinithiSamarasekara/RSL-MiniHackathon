@@ -52,7 +52,7 @@ export default function TransactionsList() {
                 <th className="px-6 py-5 font-bold uppercase text-xs tracking-wider">Type</th>
                 <th className="px-6 py-5 font-bold uppercase text-xs tracking-wider">Category</th>
                 <th className="px-6 py-5 font-bold uppercase text-xs tracking-wider">Note</th>
-                <th className="px-6 py-5 font-bold uppercase text-xs tracking-wider text-right">Amount</th>
+                <th className="px-6 py-5 font-bold uppercase text-xs tracking-wider text-right">Amount (LKR)</th>
                 <th className="px-6 py-5 font-bold uppercase text-xs tracking-wider text-right">Actions</th>
               </tr>
             </thead>
@@ -87,7 +87,7 @@ export default function TransactionsList() {
                     <td className={`px-6 py-5 text-base font-extrabold text-right whitespace-nowrap ${
                       t.type === 'income' ? 'text-green-600' : 'text-slate-800'
                     }`}>
-                      {t.type === 'income' ? '+' : '-'}${Number(t.amount).toFixed(2)}
+                      {t.type === 'income' ? '+' : '-'}Rs. {Number(t.amount).toLocaleString('en-US', { minimumFractionDigits: 2 })}
                     </td>
                     <td className="px-6 py-5">
                       <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

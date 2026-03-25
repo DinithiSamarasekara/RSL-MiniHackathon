@@ -64,7 +64,6 @@ export default function Navbar() {
         <div className="flex items-center gap-4 pl-4 border-l border-slate-200/60 ml-2">
           <div className="hidden md:flex flex-col items-end">
             <span className="text-sm font-bold text-slate-800">{currentUser.displayName}</span>
-            <span className="text-xs font-medium text-slate-500 leading-none">{currentUser.email}</span>
           </div>
           {currentUser.photoURL ? (
             <img src={currentUser.photoURL} alt="Profile" className="w-10 h-10 rounded-full shadow-md border-2 border-white hover:scale-110 transition-transform duration-300" />

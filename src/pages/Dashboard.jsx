@@ -94,7 +94,7 @@ export default function Dashboard() {
           </div>
           <h3 className="font-semibold text-slate-600">Total Balance</h3>
           <p className="text-4xl font-extrabold tracking-tight text-slate-900 bg-gradient-to-br from-slate-900 to-slate-700 bg-clip-text text-transparent">
-            ${balance.toFixed(2)}
+            Rs. {balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
           </p>
         </div>
         
@@ -104,7 +104,7 @@ export default function Dashboard() {
           </div>
           <h3 className="font-semibold text-slate-600">Total Income</h3>
           <p className="text-4xl font-extrabold tracking-tight text-slate-900 bg-gradient-to-br from-slate-900 to-slate-700 bg-clip-text text-transparent">
-            ${summary.income.toFixed(2)}
+            Rs. {summary.income.toLocaleString('en-US', { minimumFractionDigits: 2 })}
           </p>
         </div>
         
@@ -114,7 +114,7 @@ export default function Dashboard() {
           </div>
           <h3 className="font-semibold text-slate-600">Total Expenses</h3>
           <p className="text-4xl font-extrabold tracking-tight text-slate-900 bg-gradient-to-br from-slate-900 to-slate-700 bg-clip-text text-transparent">
-            ${summary.expense.toFixed(2)}
+            Rs. {summary.expense.toLocaleString('en-US', { minimumFractionDigits: 2 })}
           </p>
         </div>
       </div>
@@ -152,7 +152,6 @@ export default function Dashboard() {
   );
 }
 
-// Fallback icons if lucide is missing PieChart
 const PieChartIcon = ({ className }) => (
   <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
