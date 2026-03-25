@@ -4,7 +4,7 @@ import { Plus, Edit2, Trash2, ArrowUpRight, ArrowDownRight, ListOrdered } from '
 import TransactionForm from '../components/TransactionForm';
 
 export default function TransactionsList() {
-  const { transactions, deleteTransaction } = useFinance();
+  const { transactions, deleteTransaction, loading } = useFinance();
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingTransaction, setEditingTransaction] = useState(null);
 
@@ -17,6 +17,10 @@ export default function TransactionsList() {
     setIsFormOpen(false);
     setEditingTransaction(null);
   };
+
+  if (loading) {
+    return <div className="flex items-center justify-center p-20 text-slate-500">Loading transactions...</div>;
+  }
 
   return (
     <div className="space-y-6">

@@ -16,7 +16,11 @@ import { TrendingUp, TrendingDown, DollarSign } from 'lucide-react';
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title);
 
 export default function Dashboard() {
-  const { transactions, summary, balance } = useFinance();
+  const { transactions, summary, balance, loading } = useFinance();
+
+  if (loading) {
+    return <div className="flex items-center justify-center p-20 text-slate-500">Loading dashboard...</div>;
+  }
 
   const expensesByCategory = transactions
     .filter(t => t.type === 'expense')
