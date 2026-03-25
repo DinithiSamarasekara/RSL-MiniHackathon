@@ -82,6 +82,30 @@ export const FinanceProvider = ({ children }) => {
     }
   };
 
+  const seedMockData = async () => {
+    if (!currentUser) return;
+    const initialTransactions = [
+      { type: 'expense', amount: 50, category: 'Food', date: '2026-03-01', note: 'Groceries' },
+      { type: 'income', amount: 3000, category: 'Salary', date: '2026-03-01', note: 'March Salary' },
+      { type: 'expense', amount: 150, category: 'Transport', date: '2026-03-02', note: 'Gas' },
+      { type: 'expense', amount: 200, category: 'Bills', date: '2026-03-05', note: 'Electricity' },
+      { type: 'expense', amount: 80, category: 'Entertainment', date: '2026-03-10', note: 'Movie' }
+    ];
+
+    try {
+      for (const t of initialTransactions) {
+        await addDoc(collection(db, 'transactions'), {
+          ...t,
+          uid: currentUser.uid,
+          createdAt: new Date().toISOString()
+        });
+      }
+      console.log('Mock data seeded successfully!');
+    } catch (error) {
+      console.error('Error seeding mock data: ', error);
+    }
+  };
+
   const summary = transactions.reduce(
     (acc, t) => {
       if (t.type === 'income') acc.income += Number(t.amount);
@@ -100,6 +124,7 @@ export const FinanceProvider = ({ children }) => {
         addTransaction,
         editTransaction,
         deleteTransaction,
+        seedMockData,
         summary,
         balance,
         loading

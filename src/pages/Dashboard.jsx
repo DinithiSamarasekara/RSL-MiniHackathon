@@ -16,7 +16,7 @@ import { TrendingUp, TrendingDown, DollarSign } from 'lucide-react';
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title);
 
 export default function Dashboard() {
-  const { transactions, summary, balance, loading } = useFinance();
+  const { transactions, summary, balance, loading, seedMockData } = useFinance();
 
   if (loading) {
     return <div className="flex items-center justify-center p-20 text-slate-500">Loading dashboard...</div>;
@@ -64,9 +64,19 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6">
-      <header>
-        <h1 className="text-2xl font-bold text-slate-800">Overview</h1>
-        <p className="text-sm text-slate-500">Your financial summary at a glance.</p>
+      <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-800">Overview</h1>
+          <p className="text-sm text-slate-500">Your financial summary at a glance.</p>
+        </div>
+        {transactions.length === 0 && (
+          <button 
+            onClick={seedMockData}
+            className="px-4 py-2 bg-indigo-100 text-indigo-700 hover:bg-indigo-200 rounded-lg text-sm font-medium transition-colors"
+          >
+            Load Mock Data
+          </button>
+        )}
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
