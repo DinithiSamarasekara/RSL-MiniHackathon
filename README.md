@@ -1,84 +1,25 @@
-# ISTQB QA MCQ Exam Platform
+# Personal Finance Tracker
 
-A modern full-stack web application for an ISTQB QA MCQ exam platform using React, Tailwind CSS v4, and Firebase (Firestore + Authentication).
+## AI Development Workflow & Documentation
 
-## Features
-- **Admin Panel**: Create, edit, and delete exam papers. Protected by Firebase Authentication.
-- **Practice Mode**: Immediate feedback on answers with detailed explanations. No timer.
-- **Exam Mode**: Simulate real exam conditions with a strict timer, navigation map, and auto-submission.
-- **Responsive UI**: Clean, modern, and mobile-friendly interface built with Tailwind CSS.
+This project was built iteratively using an AI Coding Assistant. Below is documentation on how AI was utilized throughout the development process.
 
-## Step-by-Step Setup Instructions
+### 1. Phased Architecture & Planning
+- **Prompt Translation**: The initial prompt requested a "Personal Finance Tracker" replacing an old structure. The AI broke this down into manageable chunks:
+  - **Phase 1: Mock Data MVP** - Building the initial UI with hardcoded data to visualize the structure quickly.
+  - **Phase 2: Firebase Integration** - Replacing hardcoded data with real-time Firebase Authentication and Firestore persistence.
+  - **Phase 3: Premium UI Enhancements** - Refining styling using Tailwind CSS, glassmorphism, and custom animations.
+- **Task Management**: The AI generated and maintained `task.md` and `implementation_plan.md` files as dynamic checklists.
 
-### 1. Firebase Project Setup
-1. Go to the [Firebase Console](https://console.firebase.google.com/) and create a new project.
-2. Enable **Authentication** and add the **Email/Password** sign-in method.
-3. Enable **Firestore Database**:
-   - Start in **Test Mode** (or update security rules as shown below).
-   - Create a user in the Authentication tab to use as your Admin account.
+### 2. Code Generation & Implementation
+- **React Components**: AI generated functional React components (`Dashboard.jsx`, `TransactionsList.jsx`, `TransactionForm.jsx`, `Navbar.jsx`) tailored to the project requirements.
+- **State & Context**: Built modular React Context providers (`FinanceContext.jsx`, `AuthContext.jsx`) to neatly handle data fetching and Google authentication outside the UI components.
+- **Third-Party Integrations**: Automatically wrote configuration settings for Firebase and implemented `react-chartjs-2` to visualize financial metrics gracefully.
 
-### 2. Firestore Security Rules
-Go to the "Rules" tab in Firestore and paste the following to allow public reading of papers but restrict writing to authenticated admins:
+### 3. Rapid Iteration & Refinement
+- **Customizations**: Integrated user requests instantly, such as modifying the currency from `$` to `Rs. (LKR)`, hiding email data in headers, and applying specific color hues and mesh gradients.
+- **Aesthetic Overhaul**: Leveraged TailwindCSS configurations to embed custom Google Fonts (`Outfit`), dynamic keyframe animations, and "frosted glass" (glassmorphism) panel effects.
 
-```ruby
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /papers/{paper} {
-      // Anyone can read papers to take exams
-      allow read: if true;
-      // Only authenticated users (Admins) can modify papers
-      allow write: if request.auth != null;
-    }
-  }
-}
-```
-
-### 3. Local Environment Variables
-Create a `.env` file in the root of the project (`QuizAPP` folder) and add your Firebase config keys:
-
-```env
-VITE_FIREBASE_API_KEY=your_api_key
-VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-VITE_FIREBASE_PROJECT_ID=your_project_id
-VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
-VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-VITE_FIREBASE_APP_ID=your_app_id
-```
-
-### 4. Run Locally
-Install dependencies and start the Vite development server:
-```bash
-npm install
-npm run dev
-```
-
-### 5. Deployment to Vercel
-This single-codebase React App is ready for Vercel.
-1. Push this repository to GitHub.
-2. Log in to [Vercel](https://vercel.com/) and "Add New Project" from your GitHub repo.
-3. In the Vercel project configuration, add all the `VITE_FIREBASE_*` environment variables.
-4. Click **Deploy**.
-
-## Example Firestore Data Structure
-The platform dynamically creates this structure inside Firestore when the Admin saves a paper.
-```json
-{
-  "title": "Foundation Level Mock 1",
-  "description": "Standard 40 question mock exam",
-  "timeLimit": 60,
-  "questions": [
-    {
-      "questionText": "What is the main objective of testing?",
-      "options": [
-        "To find defects",
-        "To prevent defects",
-        "To execute code",
-        "To debug"
-      ],
-      "correctAnswerIndex": 0,
-      "explanation": "Testing is primarily executed to find defects, while QA is meant to prevent them."
-    }
-  ]
-}
-```
+### 4. Debugging & Error Resolution
+- **Proactive Firebase Solutions**: When Firebase threw errors, the AI decoded console logs (like missing Composite Indexes or unauthorized OAuth domains) and provided plain-text, actionable steps to resolve them directly in the Firebase Console.
+- **Syntax Patches**: Seamlessly recovered from CSS parsing failures by patching Tailwind configurations directly.
